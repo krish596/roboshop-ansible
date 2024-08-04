@@ -1,4 +1,4 @@
-- name: Build {{component}} Service
+- name: Install Python
   ansible.builtin.dnf:
     name:
       - python36
@@ -9,8 +9,8 @@
 - name: Import App Pre requisites
   ansible.builtin.import_tasks: func-appreq.yml
 
-- name: Install PIP
-  ansible.builtin.dnf: pip3.6 install -r requirements.txt
+- name: Download python Dependencies
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
 
 
 

@@ -6,8 +6,10 @@
 - name: Import App Pre requisites
   ansible.builtin.import_tasks: func-appreq.yml
 
-- name: Build {{component}} Service
-  ansible.builtin.dnf: mvn clean package ; mv target/${component}-1.0.jar ${component}.jar
+- name: Download Maven Dependencies
+  ansible.builtin.shell: mvn clean package ; mv target/${component}-1.0.jar ${component}.jar
+  args:
+    chdir: /app
 
 - name: Import Schema
   ansible.builtin.import_tasks: mysql-schema.yml

@@ -1,7 +1,4 @@
-- name: Create MongoDB Repo File
-  ansible.builtin.copy:
-    src: mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
+
 
 - name: Disable NodeJS
   ansible.builtin.shell: dnf module disable nodejs -y
