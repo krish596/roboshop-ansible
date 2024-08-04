@@ -1,8 +1,11 @@
-- name:  MongoDB Service
+- name: MongoDB Service
   hosts: all
   become: true
   tasks:
-
+    - name: Create MongoDB Repo File
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
 
     - name: Install MongoDB
       ansible.builtin.dnf:
@@ -20,4 +23,5 @@
         name: mongod
         state: restarted
         enabled: yes
+
 
