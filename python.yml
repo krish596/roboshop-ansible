@@ -10,7 +10,7 @@
   ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download python Dependencies
-  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  ansible.builtin.shell: pip3.6 install requirements.txt
 
 
 
