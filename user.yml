@@ -1,0 +1,10 @@
+- name: User
+  hosts: all
+  become: true
+  vars:
+    component: user
+    schema_type: mongodb
+
+  tasks:
+    - name: Import Nodejs
+      ansible.builtin.import_tasks: nodejs.yml

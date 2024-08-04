@@ -1,0 +1,20 @@
+- name: Build {{component}} Service
+  ansible.builtin.dnf:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: latest
+
+- name: Import App Pre requisites
+  ansible.builtin.import_tasks: func-appreq.yml
+
+- name: Install PIP
+  ansible.builtin.dnf: pip3.6 install -r requirements.txt
+
+
+
+- name: SystemD Service
+  ansible.builtin.import_tasks: func-systemd.yml
+
+

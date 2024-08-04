@@ -1,0 +1,59 @@
+- name: Frontend
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: latest
+
+    - name: Create RoboShop Conf File
+      ansible.builtin.copy:
+        src: nginx-roboshop.conf
+        dest: /etc/nginx/default.d/roboshop.conf
+
+    - name:  Remove Directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html/*
+        state: absent
+
+    - name: Create Directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
+
+    - name: Download File and Extract Content
+      ansible.builtin.unarchive:
+        src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+        dest: /usr/share/nginx/html
+        remote_src: yes
+
+    - name: Start Nginx Service
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
+
+
+
+source common.sh
+echo -e "\e[32m>>>>>>>>>>>>>Install Nginx<<<<<<<<<<<<<<<\e[0m"
+dnf install nginx -y &>>${log}
+func_exit_status
+echo -e "\e[32m>>>>>>>>>>>>>Create Roboshop Conf file<<<<<<<<<<<<<<<\e[0m"
+cp nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf &>>${log}
+func_exit_status
+echo -e "\e[32m>>>>>>>>>>>>>Remove Existing Content<<<<<<<<<<<<<<<\e[0m"
+rm -rf /usr/share/nginx/html/* &>>${log}
+func_exit_status
+echo -e "\e[32m>>>>>>>>>>>>>Download Application Content<<<<<<<<<<<<<<<\e[0m"
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log}
+func_exit_status
+cd /usr/share/nginx/html
+echo -e "\e[32m>>>>>>>>>>>>>Extract Content<<<<<<<<<<<<<<<\e[0m"
+unzip /tmp/frontend.zip &>>${log}
+func_exit_status
+echo -e "\e[32m>>>>>>>>>>>>>Start frontend service<<<<<<<<<<<<<<<\e[0m"
+systemctl enable nginx &>>${log}
+systemctl restart nginx &>>${log}
+func_exit_status

@@ -1,0 +1,17 @@
+- name: Install Maven
+  ansible.builtin.dnf:
+    name: maven
+    state: latest
+
+- name: Import App Pre requisites
+  ansible.builtin.import_tasks: func-appreq.yml
+
+- name: Build {{component}} Service
+  ansible.builtin.dnf: mvn clean package ; mv target/${component}-1.0.jar ${component}.jar
+
+- name: Import Schema
+  ansible.builtin.import_tasks: mysql-schema.yml
+
+- name: SystemD Service
+  ansible.builtin.import_tasks: func-systemd.yml
+

@@ -1,0 +1,15 @@
+- name: Catalogue
+  hosts: all
+  become: true
+  vars:
+    component: catalogue
+    schema_type: mongodb
+
+  tasks:
+    - name: Import Nodejs
+      ansible.builtin.import_tasks: nodejs.yml
+
+component=catalogue
+source common.sh
+schema_type=mongodb
+func_nodejs

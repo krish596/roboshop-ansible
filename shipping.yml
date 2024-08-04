@@ -1,0 +1,10 @@
+- name: Shipping
+  hosts: all
+  become: true
+  vars:
+    component: shipping
+    schema_type: mysql
+
+  tasks:
+    - name: Import Java
+      ansible.builtin.import_tasks: java.yml

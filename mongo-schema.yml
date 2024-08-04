@@ -1,0 +1,14 @@
+
+- name: Create MongoDB Repo File
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+
+- name: Install MongoDB
+  ansible.builtin.dnf:
+    name: mongodb-org-shell
+    state: latest
+
+- name: Load Mongo Schema
+  ansible.builtin.shell: mongo --host mongodb-dev.kr7348202.online </app/schema/{{component}}.js
