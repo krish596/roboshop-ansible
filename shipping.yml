@@ -3,7 +3,7 @@
   become: true
   vars:
     component: shipping
-    schema_type: mysql
+    schema: true
 
   tasks:
     - name: Import Java
