@@ -10,8 +10,9 @@
   ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download python Dependencies
-  ansible.builtin.shell: pip3.6 install --user
-
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
 
 
 - name: SystemD Service
