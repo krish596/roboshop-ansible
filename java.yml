@@ -13,6 +13,7 @@
 
 - name: Import Schema
   ansible.builtin.import_tasks: mysql-schema.yml
+  when: schema is defined
 
 - name: SystemD Service
   ansible.builtin.import_tasks: systemd.yml
