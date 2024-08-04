@@ -14,7 +14,7 @@
 
 
 - name: Import App Pre requisites
-  ansible.builtin.import_tasks: func-appreq.yml
+  ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download NodeJs Dependencies
   ansible.builtin.shell: npm install
@@ -25,4 +25,4 @@
   ansible.builtin.import_tasks: mongo-schema.yml
 
 - name: SystemD Service
-  ansible.builtin.import_tasks: func-systemd.yml
+  ansible.builtin.import_tasks: systemd.yml

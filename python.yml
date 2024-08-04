@@ -7,7 +7,7 @@
     state: latest
 
 - name: Import App Pre requisites
-  ansible.builtin.import_tasks: func-appreq.yml
+  ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download python Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
@@ -15,6 +15,6 @@
 
 
 - name: SystemD Service
-  ansible.builtin.import_tasks: func-systemd.yml
+  ansible.builtin.import_tasks: systemd.yml
 
 

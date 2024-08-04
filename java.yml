@@ -4,7 +4,7 @@
     state: latest
 
 - name: Import App Pre requisites
-  ansible.builtin.import_tasks: func-appreq.yml
+  ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download Maven Dependencies
   ansible.builtin.shell: mvn clean package ; mv target/${component}-1.0.jar ${component}.jar
@@ -15,5 +15,5 @@
   ansible.builtin.import_tasks: mysql-schema.yml
 
 - name: SystemD Service
-  ansible.builtin.import_tasks: func-systemd.yml
+  ansible.builtin.import_tasks: systemd.yml
 
