@@ -19,7 +19,7 @@
 
     - name: Create Directory
       ansible.builtin.file:
-        path: /app
+        path: /usr/share/nginx/html
         state: directory
 
     - name: Download File and Extract Content
