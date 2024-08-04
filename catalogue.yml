@@ -3,7 +3,7 @@
   become: true
   vars:
     component: catalogue
-    schema_type: mongodb
+    schema: true
 
   tasks:
     - name: Import Nodejs
