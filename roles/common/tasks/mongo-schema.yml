@@ -11,4 +11,4 @@
     state: latest
 
 - name: Load Mongo Schema
-  ansible.builtin.shell: mongo --host mongodb-dev.kr7348202.online </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --ssl --host docdb.{{env}}.endpoint:27017 --sslCAFile global-bundle.pem --username docdbadmin --password roboshop1234 </app/schema/catalogue.js </app/schema/{{component}}.js
