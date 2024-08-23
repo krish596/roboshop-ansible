@@ -21,6 +21,6 @@ rule_files:
 scrape_configs:
   - job_name: 'ec2-nodes'
     ec2_sd_configs:
-      - region: eu-east-1
+      - region: us-east-1
         port: 9100
 
