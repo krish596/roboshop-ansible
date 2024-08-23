@@ -4,5 +4,5 @@
     state: latest
 
 - name: Load MySQL Schema
-  ansible.builtin.shell: mysql -h mysql-dev.kr7348202.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
+  ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', 'shipping.{{env}}.DB_HOST', region='us-east-1' ) }} -u{{ lookup('aws_ssm', 'shipping.{{env}}.master_username', region='us-east-1' ) }} -p{{ lookup('aws_ssm', 'shipping.{{env}}.master_password', region='us-east-1' ) }} < /app/schema/{{component}}.sql
 
