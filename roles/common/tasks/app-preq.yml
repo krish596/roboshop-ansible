@@ -1,4 +1,5 @@
-
+- name: Setup Hostname
+  ansible.builtin.shell: set-hostname {{ component }}
 
 - name: Add Application User
   ansible.builtin.user:
