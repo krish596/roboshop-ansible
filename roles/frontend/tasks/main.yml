@@ -1,4 +1,4 @@
-- name: Setname frontend
+- name: Setup frontend
   ansible.builtin.shell: set-hostname frontend
 
 - name: Install Nginx
