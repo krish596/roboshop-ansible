@@ -41,7 +41,7 @@ scrape_configs:
         target_label: instance_type
 
 
-  - job_name: 'Nginx'
+  - job_name: 'nginx'
     ec2_sd_configs:
       - region: us-east-1
         port: 9113
