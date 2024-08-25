@@ -33,7 +33,7 @@
 
 - name: Create Prometheus Nginx Expoter Directory
   ansible.builtin.file:
-    path: nginx_exporter
+    path: /opt/nginx_exporter
     state: directory
 
 - name: Download Prometheus Nginx Exporter
