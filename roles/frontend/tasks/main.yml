@@ -45,7 +45,7 @@
 - name: Create Prometheus Nginx Exporter Service Configuration
   ansible.builtin.copy:
     src: nginx-exporter.service
-    dest: /etc/systemd/system/nginx-exporter.service
+    dest: /etc/systemd/system/nginx_exporter.service
 
 - name: Restart Prometheus Nginx Service
   ansible.builtin.systemd:
