@@ -1,0 +1,20 @@
+- name: Copy elk Repo file
+  ansible.builtin.template:
+    src: elk.repo
+    dest: /etc/yum.repos.d/elk.repo
+
+- name: Install Filebeat
+  ansible.builtin.dnf:
+    name: filebeat
+    state: installed
+
+- name: Copy filebeat Configuration file
+  ansible.builtin.template:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
+
+
+- name: Restart Filebeat
+  ansible.builtin.systemd:
+    name: filebeat
+    state: restarted

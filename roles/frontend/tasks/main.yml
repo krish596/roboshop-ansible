@@ -4,10 +4,15 @@
     name: nginx
     state: latest
 
-- name: Create RoboShop Conf File
+- name: Create RoboShop Conf File - Project Config
   ansible.builtin.copy:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Create Nginx Conf File - Main Config
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
 - name:  Remove Directory
   ansible.builtin.file:
@@ -52,3 +57,8 @@
     name: nginx_exporter
     state: restarted
     enabled: yes
+
+- name: Setup Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
