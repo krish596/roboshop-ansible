@@ -4,4 +4,7 @@
     tasks_from: nodejs
 
 
-
+- name: Setup Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
