@@ -56,8 +56,3 @@
     name: nginx_exporter
     state: restarted
     enabled: yes
-
-- name: Setup Filebeat
-  ansible.builtin.import_role:
-    name: elk
-    tasks_from: filebeat
