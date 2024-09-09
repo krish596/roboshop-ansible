@@ -37,9 +37,9 @@
     remote_src: yes
 
     vars:
-      username = {{ lookup('aws_ssm', 'nexus.username', region='us-east-1' ) }}
-      password = {{ lookup('aws_ssm', 'nexus.password', region='us-east-1' ) }}
-      appVersion = {{ lookup('aws_ssm', '{{component}}.{{env}}.{{appVersion}}', region='us-east-1' ) }}
+      "username = {{ lookup('aws_ssm', 'nexus.username', region='us-east-1' ) }}"
+      "password = {{ lookup('aws_ssm', 'nexus.password', region='us-east-1' ) }}"
+      "appVersion = {{ lookup('aws_ssm', '{{component}}.{{env}}.{{appVersion}}', region='us-east-1' ) }}"
 
 - name: Start Nginx Service
   ansible.builtin.systemd:
