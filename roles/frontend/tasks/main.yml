@@ -39,7 +39,7 @@
   vars:
     username: "{{ lookup('aws_ssm', 'nexus.{{env}}.username', region='us-east-1' ) }}"
     password: "{{ lookup('aws_ssm', 'nexus.{{env}}.password', region='us-east-1' ) }}"
-    appVersion: "{{ lookup('aws_ssm', '{{component}}.{{env}}.appVersion', region='us-east-1' ) }}"
+    appVersion: "{{ lookup('aws_ssm', '{{component}}.{{env}}.{{appVersion}}', region='us-east-1' ) }}"
 
 
 
