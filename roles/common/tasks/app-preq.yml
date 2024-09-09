@@ -22,7 +22,7 @@
 
 - name: Download File and Extract Content from Nexus
   ansible.builtin.unarchive:
-    src: http://:{{username}}:{{password}}@172.31.11.243:8081/repository/{{component}}/{{component}}-{{appVersion}}.zip
+    src: http://{{username}}:{{password}}@172.31.11.243:8081/repository/{{component}}/{{component}}-{{appVersion}}.zip
 
     dest: /app
     remote_src: yes
