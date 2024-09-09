@@ -29,17 +29,15 @@
 #    dest: /usr/share/nginx/html
 #    remote_src: yes
 
-- name: Download File and Extract Content from Nexus
+- name: Download and extract application content from Nexus
   ansible.builtin.unarchive:
-    src: http://{{username}}:{{password}}@172.31.243:8081/repository/{{component}}/{{component}}-{{appVersion}}.zip
-
-    dest: /app
+    src: http://{{username}}:{{password}}@172.31.11.243:8081/repository/{{component}}/{{component}}-{{appVersion}}.zip
+    dest: /usr/share/nginx/html
     remote_src: yes
-
   vars:
-    username: "{{ lookup('aws_ssm', 'nexus.{{env}}.username', region='us-east-1' ) }}"
-    password: "{{ lookup('aws_ssm', 'nexus.{{env}}.password', region='us-east-1' ) }}"
-    appVersion: "{{ lookup('aws_ssm', '{{component}}.{{env}}.appVersion', region='us-east-1' ) }}"
+    username: "{{ lookup('amazon.aws.aws_ssm', 'nexus.{{env}}.username', region='us-east-1') }}"
+    password: "{{ lookup('amazon.aws.aws_ssm', 'nexus.{{env}}.password', region='us-east-1') }}"
+    appVersion: "{{ lookup('amazon.aws.aws_ssm', '{{component}}.{{env}}.appVersion', region='us-east-1') }}"
 
 
 
