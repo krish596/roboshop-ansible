@@ -4,7 +4,7 @@
     state: latest
 
 - name: Create RoboShop Conf File - Project Config
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
