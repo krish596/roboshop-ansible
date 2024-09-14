@@ -1,6 +1,11 @@
-- name: Install Maven
+#- name: Install Maven
+#  ansible.builtin.dnf:
+#    name: maven
+#    state: latest
+
+- name: Install Java
   ansible.builtin.dnf:
-    name: maven
+    name: java-17-openjdk
     state: latest
 
 - name: Import App Pre requisites
