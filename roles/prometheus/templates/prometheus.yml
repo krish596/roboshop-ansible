@@ -40,7 +40,6 @@ scrape_configs:
       - source_labels: [ __meta_ec2_instance_type ]
         target_label: instance_type
 
-
   - job_name: 'nginx'
     ec2_sd_configs:
       - region: us-east-1
