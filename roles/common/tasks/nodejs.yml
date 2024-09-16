@@ -8,13 +8,13 @@
 
 - name: Enable NodeJS
   ansible.builtin.shell: dnf module enable nodejs:18 -y
-
+  when: command_status.rc != 0
 
 - name: Install NodeJS
   ansible.builtin.dnf:
     name: nodejs
     state: latest
-
+  when: command_status.rc != 0
 
 - name: Import App Pre requisites
   ansible.builtin.import_tasks: app-preq.yml
