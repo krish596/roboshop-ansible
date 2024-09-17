@@ -1,3 +1,7 @@
+- name: Check nodejs is installed
+  ansible.builtin.shell: type npm
+  register: command_status
+  ignore_errors: yes
 
 - name: Disable NodeJS
   ansible.builtin.shell: dnf module disable nodejs -y
